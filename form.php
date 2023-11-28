@@ -8,11 +8,11 @@ $dbusername = 'root';
 $dbpassword = '';
 
 $pdo = new PDO($dsn, $dbusername, $dbpassword);
-
 $data = $_POST;
 
 $stmt = $pdo->prepare("INSERT INTO contactform (fName, lName, email, phone_num, message) VALUES (?, ?, ?, ?, ?)");
 $success = $stmt->execute([$data['fName'], $data['lName'], $data['email'], $data['phone_num'], $data['message']]);
-echo json_encode(['success' => $success]);
-?>
+
+$response = ['success' => $success ? 'true' : 'false'];
+echo json_encode($response);
 ?>

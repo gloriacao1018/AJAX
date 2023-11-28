@@ -1,22 +1,22 @@
-document.querySelector('form').addEventListener('submit', function(event){
+document.querySelector('#dataForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    var formData = new FormData(this);
-    var xhr = new XMLHttpRequest();
+
+    let xhr = new XMLHttpRequest();
+    let form = event.target;
+
     xhr.onreadystatechange = function() {
-        if(xhr.readyState === XMLHttpRequest.DONE){
+        if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                var responseJSON = JSON.parse(xhr.responseText);
-                if(responseJSON.success){
-                    document.querySelector('#message').innerHTML = 'Data entered successfully';
+                let response = JSON.parse(xhr.responseText);
+                if (response.success === "true") {
+                    document.querySelector('#responsePara').innerHTML = 'Data was successfully entered!';
                 } else {
-                    // Modify the DOM to show an error message
-                    document.querySelector('#message').innerHTML = 'Error entering data';
+                    document.querySelector('#responsePara').innerHTML = 'There was an error entering the data.';
                 }
-            } else {
-                document.querySelector('#message').innerHTML = 'Error communicating with server';
             }
         }
     };
-    xhr.open("POST", "contact.php", true);
-    xhr.send(formData);
+
+    xhr.open('POST', 'form.php', true);
+    xhr.send(new FormData(form));
 });

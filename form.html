@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>   
-    <script src="main.js"></script>
 </head>
 <body>
-    <section id="contact-form">
-        <form action="form.php" method="POST">
-            <h3>Contact Us!</h3>
-            <ul>
-                <li>First Name: <input type="text" name="fName"></li>
-                <li>Last Name: <input type="text" name="lName"></li>
-                <li>Email: <input type="text" name="email"></li>
-                <li>Phone Number: <input type="text" name="phone_num"></li>
-                <li>Message: <textarea name="message"></textarea></li>
-                <li><input type="submit" value="Submit"></li>
-            </ul>
-        </form>
-    </section>
-
+    <p id="responsePara"></p>
+    <section id="contactform"></section>
+    <form id="dataForm" action="form.php" method="POST">
+    <h3>Contact Us!</h3>
+    First Name: <input type="text" name="fName">
+    Last Name: <input type="text" name="lName">
+    Email: <input type="text" name="email">
+    Phone Number: <input type="text" name="phone_num">
+    Message: <textarea name="message"></textarea>
+    <input type="submit" value="Submit">
+    </form>
+    <script src="main.js"></script>
 </body>
 </html>
